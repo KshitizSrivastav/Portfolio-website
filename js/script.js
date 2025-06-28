@@ -168,39 +168,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize skill tag animations
     animateSkillTags();
 
-    // Contact form handling - Only for non-Netlify forms
-    const contactForm = document.querySelector('.contact-form');
-    if (contactForm && !contactForm.hasAttribute('netlify')) {
-        // Only add JavaScript handling if NOT using Netlify forms
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const subject = formData.get('subject');
-            const message = formData.get('message');
-
-            // Basic validation
-            if (!name || !email || !subject || !message) {
-                showNotification('Please fill in all fields', 'error');
-                return;
-            }
-
-            if (!isValidEmail(email)) {
-                showNotification('Please enter a valid email address', 'error');
-                return;
-            }
-
-            // Show message for local testing
-            showNotification('Form validation passed! Deploy to Netlify to receive real emails. Check EMAIL-SETUP.md for instructions.', 'info');
-            this.reset();
-        });
-    }
-    
-    // For Netlify forms, we don't add any JavaScript handling at all
-    // Let the form submit naturally to Netlify with the action="/thank-you.html"
+    // Contact form handling - DISABLED for Netlify Forms
+    // Netlify forms handle submission automatically with action="/thank-you.html"
+    // No JavaScript intervention needed
 
     // Email validation
     function isValidEmail(email) {
