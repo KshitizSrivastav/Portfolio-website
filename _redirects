@@ -1,0 +1,3 @@
+# Netlify redirects file
+# Form submission success redirect
+/thank-you  /thank-you.html  200

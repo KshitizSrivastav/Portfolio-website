@@ -176,9 +176,18 @@ document.addEventListener('DOMContentLoaded', function() {
             const hasNetlifyAttr = this.hasAttribute('netlify');
             
             if (hasNetlifyAttr) {
-                // Using Netlify Forms - let it handle submission naturally
-                // Just show a notification before submission
+                // Using Netlify Forms - add enhanced handling
                 showNotification('Sending message...', 'info');
+                
+                // Add a timeout fallback in case redirect fails
+                setTimeout(() => {
+                    // Check if still on the same page after 3 seconds
+                    if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+                        // Manually redirect to thank you page
+                        window.location.href = './thank-you.html';
+                    }
+                }, 3000);
+                
                 return; // Let the form submit normally to Netlify
             }
             
