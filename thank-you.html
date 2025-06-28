@@ -4,13 +4,315 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thank You - Kshitiz Srivastav</title>
-    <meta name="description" content="Thank you for contacting Kshitiz Srivastav">
+    <meta name="description" content="Thank you for contacting Kshitiz Srivastav - I'll get back to you soon!">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Custom styles for thank you page */
+        .thank-you-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #111827;
+            position: relative;
+            overflow: hidden;
+            padding-top: 100px;
+        }
+
+        .thank-you-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+            animation: backgroundShift 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes backgroundShift {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.7; }
+        }
+
+        .thank-you-content {
+            text-align: center;
+            color: white;
+            max-width: 800px;
+            padding: 3rem 2rem;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success-icon {
+            font-size: 5rem;
+            background: linear-gradient(45deg, #10b981, #059669);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2rem;
+            animation: bounceIn 1.2s ease-out 0.3s both;
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .thank-you-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #f8fafc, #e2e8f0);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+            animation: slideInLeft 1s ease-out 0.6s both;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .thank-you-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #10b981;
+            font-weight: 600;
+            animation: slideInRight 1s ease-out 0.9s both;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .thank-you-message {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            line-height: 1.7;
+            color: #d1d5db;
+            animation: fadeIn 1s ease-out 1.2s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .thank-you-actions {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+            animation: slideInUp 1s ease-out 1.5s both;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .thank-you-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .thank-you-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .thank-you-btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary-thank {
+            background: linear-gradient(45deg, #2563eb, #7c3aed);
+            color: white;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-primary-thank:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-secondary-thank {
+            background: transparent;
+            color: #e5e7eb;
+            border: 2px solid #374151;
+        }
+
+        .btn-secondary-thank:hover {
+            transform: translateY(-3px) scale(1.05);
+            border-color: #2563eb;
+            color: #2563eb;
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.2);
+        }
+
+        .thank-you-footer {
+            padding-top: 3rem;
+            border-top: 1px solid #374151;
+            animation: fadeIn 1s ease-out 1.8s both;
+        }
+
+        .thank-you-footer h3 {
+            color: #9ca3af;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .social-links-thank {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .social-link-thank {
+            color: #6b7280;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(55, 65, 81, 0.5);
+        }
+
+        .social-link-thank:hover {
+            transform: translateY(-5px) rotate(5deg);
+            background: rgba(37, 99, 235, 0.2);
+        }
+
+        .linkedin:hover { color: #0077b5; }
+        .github:hover { color: #333; }
+        .instagram:hover { color: #e4405f; }
+        .twitter:hover { color: #1da1f2; }
+
+        .contact-info-quick {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item-quick {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #9ca3af;
+            font-size: 0.95rem;
+        }
+
+        .contact-item-quick i {
+            color: #10b981;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .thank-you-title {
+                font-size: 2.5rem;
+            }
+            
+            .thank-you-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .thank-you-message {
+                font-size: 1.1rem;
+            }
+            
+            .thank-you-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .thank-you-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .contact-info-quick {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -47,93 +349,81 @@
         </div>
     </nav>
 
-    <!-- Thank You Section -->
-    <section class="thank-you-section" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #111827; padding-top: 100px;">
-        <div class="thank-you-content" style="text-align: center; color: white; max-width: 600px; padding: 3rem 2rem;">
-            <!-- Success Icon -->
-            <div style="font-size: 4rem; color: #10b981; margin-bottom: 1.5rem;">
+    <!-- Thank You Hero Section -->
+    <section class="thank-you-hero">
+        <div class="thank-you-content">
+            <!-- Success Icon with Animation -->
+            <div class="success-icon">
                 <i class="fas fa-check-circle"></i>
             </div>
             
-            <!-- Thank You Message -->
-            <h1 style="font-size: 3rem; margin-bottom: 1rem; background: linear-gradient(45deg, #10b981, #059669); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700;">
-                Thank You!
-            </h1>
+            <!-- Main Message -->
+            <h1 class="thank-you-title">Thank You!</h1>
+            <h2 class="thank-you-subtitle">Message Sent Successfully</h2>
             
-            <h2 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: #e5e7eb; font-weight: 500;">
-                Your message has been sent successfully
-            </h2>
-            
-            <p style="font-size: 1.1rem; margin-bottom: 2.5rem; opacity: 0.9; line-height: 1.6; color: #d1d5db;">
-                Thank you for reaching out! I appreciate your interest and will get back to you as soon as possible. 
-                Usually within 24 hours.
+            <p class="thank-you-message">
+                I appreciate you taking the time to reach out! Your message has been received and I'll get back to you within 24 hours. 
+                In the meantime, feel free to explore my projects or connect with me on social media.
             </p>
             
             <!-- Action Buttons -->
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <a href="/" style="
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 0.5rem;
-                    background: linear-gradient(45deg, #2563eb, #7c3aed);
-                    color: white;
-                    padding: 1rem 2rem;
-                    border-radius: 50px;
-                    text-decoration: none;
-                    font-weight: 600;
-                    transition: all 0.3s ease;
-                    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
-                " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(37, 99, 235, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(37, 99, 235, 0.3)'">
+            <div class="thank-you-actions">
+                <a href="/" class="thank-you-btn btn-primary-thank">
                     <i class="fas fa-home"></i>
                     Back to Homepage
                 </a>
                 
-                <a href="/#projects" style="
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 0.5rem;
-                    background: transparent;
-                    color: #e5e7eb;
-                    padding: 1rem 2rem;
-                    border: 2px solid #374151;
-                    border-radius: 50px;
-                    text-decoration: none;
-                    font-weight: 600;
-                    transition: all 0.3s ease;
-                " onmouseover="this.style.borderColor='#2563eb'; this.style.color='#2563eb'" onmouseout="this.style.borderColor='#374151'; this.style.color='#e5e7eb'">
+                <a href="/#projects" class="thank-you-btn btn-secondary-thank">
                     <i class="fas fa-folder-open"></i>
                     View My Projects
                 </a>
+                
+                <a href="/resume/resume.pdf" class="thank-you-btn btn-secondary-thank" download="Kshitiz-Srivastav-Resume.pdf">
+                    <i class="fas fa-download"></i>
+                    Download Resume
+                </a>
             </div>
             
-            <!-- Social Links -->
-            <div style="margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid #374151;">
-                <p style="color: #9ca3af; margin-bottom: 1rem; font-size: 0.9rem;">
-                    Connect with me on social media:
-                </p>
-                <div style="display: flex; gap: 1rem; justify-content: center;">
-                    <a href="https://www.linkedin.com/in/kshitiz-srivastav-490b64281/" style="
-                        color: #9ca3af;
-                        font-size: 1.5rem;
-                        transition: all 0.3s ease;
-                    " onmouseover="this.style.color='#0077b5'; this.style.transform='translateY(-2px)'" onmouseout="this.style.color='#9ca3af'; this.style.transform='translateY(0)'">
-                        <i class="fab fa-linkedin"></i>
+            <!-- Contact Info & Social Links Footer -->
+            <div class="thank-you-footer">
+                <h3>Stay Connected</h3>
+                
+                <!-- Quick Contact Info -->
+                <div class="contact-info-quick">
+                    <div class="contact-item-quick">
+                        <i class="fas fa-envelope"></i>
+                        <span>kshitizsr02@gmail.com</span>
+                    </div>
+                    <div class="contact-item-quick">
+                        <i class="fas fa-phone"></i>
+                        <span>+91-8697652295</span>
+                    </div>
+                    <div class="contact-item-quick">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Ghaziabad, India</span>
+                    </div>
+                </div>
+                
+                <!-- Social Media Links -->
+                <div class="social-links-thank">
+                    <a href="https://www.linkedin.com/in/kshitiz-srivastav-490b64281/" class="social-link-thank linkedin" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-linkedin-in"></i>
                     </a>
-                    <a href="https://github.com/KshitizSrivastav" style="
-                        color: #9ca3af;
-                        font-size: 1.5rem;
-                        transition: all 0.3s ease;
-                    " onmouseover="this.style.color='#333'; this.style.transform='translateY(-2px)'" onmouseout="this.style.color='#9ca3af'; this.style.transform='translateY(0)'">
+                    <a href="https://github.com/KshitizSrivastav" class="social-link-thank github" target="_blank" rel="noopener noreferrer">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="https://www.instagram.com/kshitiz_sr02?igsh=YmIwMmpiMWRmZjUy" style="
-                        color: #9ca3af;
-                        font-size: 1.5rem;
-                        transition: all 0.3s ease;
-                    " onmouseover="this.style.color='#e4405f'; this.style.transform='translateY(-2px)'" onmouseout="this.style.color='#9ca3af'; this.style.transform='translateY(0)'">
+                    <a href="https://www.instagram.com/kshitiz_sr02?igsh=YmIwMmpiMWRmZjUy" class="social-link-thank instagram" target="_blank" rel="noopener noreferrer">
                         <i class="fab fa-instagram"></i>
                     </a>
+                    <a href="#" class="social-link-thank twitter" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-twitter"></i>
+                    </a>
                 </div>
+                
+                <!-- Additional Message -->
+                <p style="color: #6b7280; font-size: 0.9rem; margin-top: 1.5rem;">
+                    Looking forward to connecting with you soon! 🚀
+                </p>
             </div>
         </div>
     </section>
