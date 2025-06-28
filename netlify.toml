@@ -6,8 +6,10 @@
 
 # Form handling settings
 [forms]
-  # Enable form detection
+  # Enable form detection and processing
   # Forms with netlify attribute will be automatically detected
+  # Force form detection during build
+  enabled = true
 
 # Headers for security and performance
 [[headers]]

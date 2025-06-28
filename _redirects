@@ -1,3 +1,6 @@
 # Netlify redirects file
 # Form submission success redirect
 /thank-you  /thank-you.html  200
+
+# Ensure form submissions are processed correctly
+# This helps with form detection and processing
