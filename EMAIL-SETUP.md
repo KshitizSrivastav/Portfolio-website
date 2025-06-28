@@ -286,3 +286,64 @@ After setting up email integration:
 4. Set up email notifications in Netlify dashboard
 
 Would you like me to help you with the Netlify deployment process or any other setup?
+
+---
+
+## 🚨 Troubleshooting Common Issues
+
+### **404 Error After Form Submission**
+
+If you get a "404 page not found" error after submitting the form, it means Netlify doesn't know where to redirect users after successful submission.
+
+#### **Solution: Add Thank You Page**
+
+1. **Create `thank-you.html`** in your website root folder (already done)
+2. **Update your form** to include the redirect action:
+   ```html
+   <form class="contact-form" name="contact" method="POST" netlify netlify-honeypot="bot-field" action="/thank-you.html">
+   ```
+3. **Re-deploy to Netlify** with both files
+
+#### **Alternative: JavaScript Form Handling**
+```javascript
+// Add to script.js for AJAX form submission without redirect
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.querySelector('.contact-form');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(contactForm);
+            
+            fetch('/', {
+                method: 'POST',
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(() => {
+                alert('Message sent successfully!');
+                contactForm.reset();
+            })
+            .catch(() => {
+                alert('Failed to send message. Please try again.');
+            });
+        });
+    }
+});
+```
+
+### **Form Not Appearing in Netlify Dashboard**
+
+1. Ensure form has `netlify` attribute
+2. Check that `name="contact"` matches hidden field
+3. Verify `method="POST"` is set
+4. Make sure form is in the deployed site (not just local)
+
+### **Email Notifications Not Working**
+
+1. Go to Netlify site dashboard
+2. Click "Forms" in sidebar
+3. Click "Settings & usage"
+4. Add email notification
+5. Check spam folder for notifications
