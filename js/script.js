@@ -176,22 +176,16 @@ document.addEventListener('DOMContentLoaded', function() {
             const hasNetlifyAttr = this.hasAttribute('netlify');
             
             if (hasNetlifyAttr) {
-                // Using Netlify Forms - add enhanced handling
+                // Using Netlify Forms - let the form submit normally
+                // Just show a loading message but don't prevent default
                 showNotification('Sending message...', 'info');
                 
-                // Add a timeout fallback in case redirect fails
-                setTimeout(() => {
-                    // Check if still on the same page after 3 seconds
-                    if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
-                        // Manually redirect to thank you page
-                        window.location.href = './thank-you.html';
-                    }
-                }, 3000);
-                
+                // Don't prevent default - let Netlify handle the form submission
+                // The form will redirect to thank-you.html automatically
                 return; // Let the form submit normally to Netlify
             }
             
-            // Fallback for local testing/development
+            // Fallback for local testing/development (only when netlify attribute is missing)
             e.preventDefault();
             
             // Get form data
