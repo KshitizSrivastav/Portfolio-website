@@ -246,3 +246,5 @@ Then visit `http://localhost:8000`
 - SEO audits
 - Accessibility testing
 - User feedback integration
+
+## Checking for usability
